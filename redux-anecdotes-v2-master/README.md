@@ -37,5 +37,9 @@ Pieni bugi jäi kun notifikaation timeri jää päälle vaikka uusi timeri käyn
 
 18:09 koodaus alkaa... 18:14 tehtävä 6.9. on valmis! Huraa!
 
+21:05 aloitin 6.10.
 
+Paljon säätöä. Vanha palvelin oli päällä ja se sotki samassa portissa pyörivää uutta palvelinta. En myöskään vienyt riittävän juureen db.jsonia. Jostain syystä sieltä löytyi toinen db joka myös sotki kuviota.
+
+22:45 6.10 valmis
 

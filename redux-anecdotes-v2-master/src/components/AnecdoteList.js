@@ -9,8 +9,8 @@ class AnecdoteList extends React.Component {
   render() {
 
     let {anecdotes, filter } = this.props
-    console.log(anecdotes)
-    console.log(filter)
+    // console.log(anecdotes)
+    // console.log(filter)
     
     anecdotes = anecdotes.filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLowerCase()))
        
