@@ -7,16 +7,18 @@ const notificationReducer = (state = notification, action) => {
     case 'NOTE':
     	const content = 'You voted: '+ action.name
       return content
+    
     case 'ADDED':
     	const content2 = 'You added the following new anecdote: ' + action.name
     return content2
+    
     case 'CLEAR':
-    return null
-
+    return ' '
+    
     default:
-      return null
+    return ' '
   }
-return state
+//return state
 }
 
 

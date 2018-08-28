@@ -1,15 +1,27 @@
 import React from 'react'
 import { voting } from '../reducers/anecdoteReducer'
 import { votingNoted } from '../reducers/notificationReducer'
+import { clearVoting } from '../reducers/notificationReducer'
+import { connect } from 'react-redux'
+
 
 class AnecdoteList extends React.Component {
   render() {
-    const anecdotes = this.props.store.getState().anecdotes
+
+    let {anecdotes, filter } = this.props
+    console.log(anecdotes)
+    console.log(filter)
     
+    anecdotes = anecdotes.filter(anecdote => anecdote.content.includes(filter))
+       
     const voteUp = (anecdote) =>{
-      this.props.store.dispatch(voting(anecdote.id))
-      this.props.store.dispatch(votingNoted(anecdote.content))
+      this.props.voting(anecdote.id)
+      this.props.votingNoted(anecdote.content)
+      setTimeout(() => {
+          this.props.clearVoting()
+      }, 5000)
     }
+
 
     return (
       <div>
@@ -22,7 +34,6 @@ class AnecdoteList extends React.Component {
             <div>
               has {anecdote.votes}
               <button onClick={() => 
-//                  this.props.store.dispatch(voting(anecdote.id))
               voteUp(anecdote)
               }>
                 vote
@@ -35,4 +46,22 @@ class AnecdoteList extends React.Component {
   }
 }
 
-export default AnecdoteList
+const mapStateToProps = (state) => {
+  return {
+    anecdotes: state.anecdotes,
+    filter: state.filter
+  }
+}
+
+const mapDispatchToProps = {
+  clearVoting,
+  voting,
+  votingNoted
+}
+
+const ConnectedAnecdoteList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AnecdoteList)
+
+export default ConnectedAnecdoteList
