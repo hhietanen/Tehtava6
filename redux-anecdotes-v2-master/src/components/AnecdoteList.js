@@ -12,7 +12,7 @@ class AnecdoteList extends React.Component {
     console.log(anecdotes)
     console.log(filter)
     
-    anecdotes = anecdotes.filter(anecdote => anecdote.content.includes(filter))
+    anecdotes = anecdotes.filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLowerCase()))
        
     const voteUp = (anecdote) =>{
       this.props.voting(anecdote.id)
@@ -46,10 +46,17 @@ class AnecdoteList extends React.Component {
   }
 }
 
+const anecdotesToShow = (anecdotes, filter) => {
+    return anecdotes.filter(anecdote => 
+      anecdote.content.toLowerCase()
+      .includes(filter.toLowerCase()))
+}
+
 const mapStateToProps = (state) => {
   return {
     anecdotes: state.anecdotes,
-    filter: state.filter
+    filter: state.filter,
+    visibleAnecdotes: anecdotesToShow(state.anecdotes, state.filter)
   }
 }
 

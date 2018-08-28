@@ -33,7 +33,9 @@ Se täytyy kun 7 tehtävää on tehtynä.
 
 Pieni bugi jäi kun notifikaation timeri jää päälle vaikka uusi timeri käynnistyy. Annan olla :)
 
+18:00 aloitin 6.9 tekemisen lukemalla
 
+18:09 koodaus alkaa... 18:14 tehtävä 6.9. on valmis! Huraa!
 
 
 
