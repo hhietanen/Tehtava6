@@ -51,3 +51,7 @@ Lopetin 6.11 tekemisen klo 0:37 noin 90 minuutin hieromisen jälkeen. Ei pitäis
 
 
 6.11. ja 6.12 tekemiseen meni noin tunti. Siitä suurin osa meni pienten bugien etsimiseen. Samalla löytyi uusi bugi joka oli filter reducerin alustamisessa. Filtterissä ei ole sama onko kyseessä ' ' tai ''.
+
+110 tehtävää tehty. Aika monta tuntia tähän on mennyt. 
+
+klo 22 aloitin thunk-tehtävät

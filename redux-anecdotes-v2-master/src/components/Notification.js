@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 class Notification extends React.Component {
 
   render() {
+    console.log(this.props)
   let {notifications} = this.props
   console.log(notifications)
     const style = {

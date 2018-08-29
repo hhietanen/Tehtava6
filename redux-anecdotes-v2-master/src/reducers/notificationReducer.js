@@ -34,6 +34,7 @@ export const votingNoted = (name) => {
 
 export const addingNoted = (name) => {
   console.log('adding notification triggered')
+  console.log(name)
   return { 
       type: 'ADDED', 
       name 

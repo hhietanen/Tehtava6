@@ -14,16 +14,12 @@ class AnecdoteList extends React.Component {
     
     anecdotes = anecdotes.filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLowerCase()))
     
-    let timeoutID
 
     const voteUp = async (anecdote) =>{
-      const newAnecdote = await anecdoteService.voteAnecdote(anecdote)
-      console.log(newAnecdote)
-      
-      clearTimeout(timeoutID)
-      this.props.voting(newAnecdote.id)
-      this.props.votingNoted(newAnecdote.content)
-      timeoutID = setTimeout(() => {
+//      console.log(newAnecdote)      
+      this.props.voting(anecdote)
+      this.props.votingNoted(anecdote.content)
+      setTimeout(() => {
           this.props.clearVoting()
       }, 5000)
     }

@@ -1,4 +1,4 @@
-const getId = () => (100000*Math.random()).toFixed(0)
+//const getId = () => (100000*Math.random()).toFixed(0)
 
 // const anecdotesAtStart = [
 //   'If it hurts, do it more often',
@@ -19,7 +19,11 @@ const getId = () => (100000*Math.random()).toFixed(0)
 
 // const initialState = anecdotesAtStart.map(asObject)
 
+
+import anecdoteService from '../services/anecdotes'
+
 const anecdoteReducer = (state = [], action) => {
+   console.log('ACTION: ', action)
   switch (action.type) {
     case 'VOTE':
       const old = state.filter(a => a.id !==action.id)
@@ -39,26 +43,43 @@ const anecdoteReducer = (state = [], action) => {
 
 // Action creators
 // 
-export const anecdoteInitialization = (content) => {
-//  console.log(content)
-  return {
-    type: 'INIT_ANECDOTES',
-    content
+// export const anecdoteInitialization = (content) => {
+//   console.log(content)
+//   return {
+//     type: 'INIT_ANECDOTES',
+//     content
+//   }
+// }
+
+export const anecdoteInitialization = () => {
+  return async (dispatch) => {
+    const anecdotes = await anecdoteService.getAll() 
+    dispatch({
+      type: 'INIT_ANECDOTES',
+      content: anecdotes
+    })
   }
 }
 
 export const creation = (content) => {
-  console.log('creation triggered')
-  return { 
+//  console.log('creation triggered')
+  return async (dispatch) => {
+    const newAnecdote = await anecdoteService.createNew(content) 
+    dispatch({ 
       type: 'CREATE', 
-      content 
-    }
+      content : newAnecdote
+    })
+  }
 }
 
-export const voting = (id) => {
-  return { 
-    type: 'VOTE', 
-    id
+export const voting = (anecdote) => {
+  return async (dispatch) => {
+      const newAnecdote = await anecdoteService.voteAnecdote(anecdote)
+
+    dispatch({ 
+      type: 'VOTE', 
+      id: newAnecdote.id
+    })
   }
 }
 

@@ -9,12 +9,13 @@ class AnecdoteForm extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault()
     const content = e.target.anecdote.value
-    console.log(e.target.anecdote.value)
+//    console.log(e.target.anecdote.value)
     e.target.anecdote.value = ''
-    const newAnecdote = await anecdoteService.createNew(content)
-    console.log(newAnecdote)
-    this.props.creation(newAnecdote) 
-    this.props.addingNoted(newAnecdote)
+//    const newAnecdote = await anecdoteService.createNew(content)
+//    console.log(newAnecdote)
+//    this.props.creation(newAnecdote)
+    this.props.creation(content)
+    this.props.addingNoted(content)
     setTimeout(() => {
       this.props.clearVoting()
     }, 5000)
