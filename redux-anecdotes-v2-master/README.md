@@ -54,4 +54,6 @@ Lopetin 6.11 tekemisen klo 0:37 noin 90 minuutin hieromisen jälkeen. Ei pitäis
 
 110 tehtävää tehty. Aika monta tuntia tähän on mennyt. 
 
-klo 22 aloitin thunk-tehtävät
+klo 22 aloitin thunk-tehtävät 6:13 ja 6:14 noin 40 minuuttia. Pikku bugien korjailua.
+
+
