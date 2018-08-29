@@ -39,7 +39,15 @@ Pieni bugi jäi kun notifikaation timeri jää päälle vaikka uusi timeri käyn
 
 21:05 aloitin 6.10.
 
+Palvelin käynnistyy komennolla **npm run server**
+
 Paljon säätöä. Vanha palvelin oli päällä ja se sotki samassa portissa pyörivää uutta palvelinta. En myöskään vienyt riittävän juureen db.jsonia. Jostain syystä sieltä löytyi toinen db joka myös sotki kuviota.
 
 22:45 6.10 valmis
 
+Lopetin 6.11 tekemisen klo 0:37 noin 90 minuutin hieromisen jälkeen. Ei pitäisi tehdä väsyneenä
+
+***
+
+
+6.11. ja 6.12 tekemiseen meni noin tunti. Siitä suurin osa meni pienten bugien etsimiseen. Samalla löytyi uusi bugi joka oli filter reducerin alustamisessa. Filtterissä ei ole sama onko kyseessä ' ' tai ''.

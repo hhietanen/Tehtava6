@@ -17,4 +17,4 @@ anecdoteService.getAll().then(anecdotes =>
 )
 
 
-export default store
+export default store 

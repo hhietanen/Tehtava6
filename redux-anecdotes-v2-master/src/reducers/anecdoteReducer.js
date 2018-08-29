@@ -27,7 +27,7 @@ const anecdoteReducer = (state = [], action) => {
     return [...old, { ...voted, votes: voted.votes+1} ]
   
     case 'CREATE':
-    return [...state, { content: action.content, id: getId(), votes:0 }]
+    return [...state, action.content ]
 
     case 'INIT_ANECDOTES':
     return action.content

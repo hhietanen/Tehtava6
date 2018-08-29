@@ -3,7 +3,7 @@ import { voting } from '../reducers/anecdoteReducer'
 import { votingNoted } from '../reducers/notificationReducer'
 import { clearVoting } from '../reducers/notificationReducer'
 import { connect } from 'react-redux'
-
+import anecdoteService from '../services/anecdotes'
 
 class AnecdoteList extends React.Component {
   render() {
@@ -13,11 +13,17 @@ class AnecdoteList extends React.Component {
     // console.log(filter)
     
     anecdotes = anecdotes.filter(anecdote => anecdote.content.toLowerCase().includes(filter.toLowerCase()))
-       
-    const voteUp = (anecdote) =>{
-      this.props.voting(anecdote.id)
-      this.props.votingNoted(anecdote.content)
-      setTimeout(() => {
+    
+    let timeoutID
+
+    const voteUp = async (anecdote) =>{
+      const newAnecdote = await anecdoteService.voteAnecdote(anecdote)
+      console.log(newAnecdote)
+      
+      clearTimeout(timeoutID)
+      this.props.voting(newAnecdote.id)
+      this.props.votingNoted(newAnecdote.content)
+      timeoutID = setTimeout(() => {
           this.props.clearVoting()
       }, 5000)
     }
@@ -47,6 +53,7 @@ class AnecdoteList extends React.Component {
 }
 
 const anecdotesToShow = (anecdotes, filter) => {
+  console.log(anecdotes)
     return anecdotes.filter(anecdote => 
       anecdote.content.toLowerCase()
       .includes(filter.toLowerCase()))
