@@ -52,8 +52,13 @@ Lopetin 6.11 tekemisen klo 0:37 noin 90 minuutin hieromisen jälkeen. Ei pitäis
 
 6.11. ja 6.12 tekemiseen meni noin tunti. Siitä suurin osa meni pienten bugien etsimiseen. Samalla löytyi uusi bugi joka oli filter reducerin alustamisessa. Filtterissä ei ole sama onko kyseessä ' ' tai ''.
 
-110 tehtävää tehty. Aika monta tuntia tähän on mennyt. 
+Kurssin aikana olen tehnyt nyt 110 tehtävää. Aika monta tuntia tähän on mennyt. 
 
 klo 22 aloitin thunk-tehtävät 6:13 ja 6:14 noin 40 minuuttia. Pikku bugien korjailua.
+
+***
+
+Vähän reilu tunti 6:15 tehtävän tekemiseen. Itse action creator oli helppo, mutta aikaisempien bugien löytyminen verotti 30 minuuttia aikaa.
+
 
 
