@@ -31,6 +31,22 @@ export const votingNoted = (name) => {
     }
 }
 
+// export const notify = (name, time) => {
+//   console.log('notify notification triggered')
+//   return async (dispatch) => { 
+//     dispatch({
+//       type: 'NOTE', 
+//       name
+//     })
+//     setTimeout(() => {
+//       dispatch({
+//         type: 'CLEAR'
+//       })
+//     }, time*100)
+
+//   }
+// }s
+
 
 export const addingNoted = (name) => {
   console.log('adding notification triggered')

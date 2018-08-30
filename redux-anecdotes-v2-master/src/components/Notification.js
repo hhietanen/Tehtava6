@@ -5,8 +5,8 @@ class Notification extends React.Component {
 
   render() {
     console.log(this.props)
-  let {notifications} = this.props
-  console.log(notifications)
+    let {notifications} = this.props
+    console.log(notifications)
     const style = {
       border: 'solid',
       padding: 10,
