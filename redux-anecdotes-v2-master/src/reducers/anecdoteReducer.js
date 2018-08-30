@@ -42,14 +42,6 @@ const anecdoteReducer = (state = [], action) => {
 }
 
 // Action creators
-// 
-// export const anecdoteInitialization = (content) => {
-//   console.log(content)
-//   return {
-//     type: 'INIT_ANECDOTES',
-//     content
-//   }
-// }
 
 export const anecdoteInitialization = () => {
   return async (dispatch) => {
@@ -74,7 +66,7 @@ export const creation = (content) => {
 
 export const voting = (anecdote) => {
   return async (dispatch) => {
-      const newAnecdote = await anecdoteService.voteAnecdote(anecdote)
+    const newAnecdote = await anecdoteService.voteAnecdote(anecdote)
 
     dispatch({ 
       type: 'VOTE', 

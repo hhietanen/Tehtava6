@@ -5,13 +5,9 @@ const notification = 'Ilmoitukset tulevat tähän'
 const notificationReducer = (state = notification, action) => {
   switch (action.type) {
     case 'NOTE':
-    	const content = 'You voted: '+ action.name
-      return content
-    
-    case 'ADDED':
-    	const content2 = 'You added the following new anecdote: ' + action.name
-    return content2
-    
+    	const content = 'You voted / added: '+ action.name
+    return content
+        
     case 'CLEAR':
     return ' '
     
@@ -23,45 +19,21 @@ const notificationReducer = (state = notification, action) => {
 
 
 // Action creators
-export const votingNoted = (name) => {
-  console.log('voting notification triggered')
-  return { 
+
+export const notify = (name, time) => {
+  console.log('notify notification triggered')
+  return async (dispatch) => { 
+    dispatch({
       type: 'NOTE', 
-      name 
-    }
-}
+      name
+    })
+    setTimeout(() => {
+      dispatch({
+        type: 'CLEAR'
+      })
+    }, time*100)
 
-// export const notify = (name, time) => {
-//   console.log('notify notification triggered')
-//   return async (dispatch) => { 
-//     dispatch({
-//       type: 'NOTE', 
-//       name
-//     })
-//     setTimeout(() => {
-//       dispatch({
-//         type: 'CLEAR'
-//       })
-//     }, time*100)
-
-//   }
-// }s
-
-
-export const addingNoted = (name) => {
-  console.log('adding notification triggered')
-  console.log(name)
-  return { 
-      type: 'ADDED', 
-      name 
-    }
-}
-
-export const clearVoting = () => {
-  console.log('null notification triggered')
-  return { 
-      type: 'CLEAR' 
-    }
+  }
 }
 
 
