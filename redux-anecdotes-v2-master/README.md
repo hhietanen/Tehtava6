@@ -60,5 +60,7 @@ klo 22 aloitin thunk-tehtävät 6:13 ja 6:14 noin 40 minuuttia. Pikku bugien kor
 
 Vähän reilu tunti 6:15 tehtävän tekemiseen. Itse action creator oli helppo, mutta aikaisempien bugien löytyminen verotti 30 minuuttia aikaa.
 
+Koodia alkaa olla kompaktia ja kaunista. Nyt aika hylätä tämä koodi ja siirtyä reititykseen.
+
 
 
