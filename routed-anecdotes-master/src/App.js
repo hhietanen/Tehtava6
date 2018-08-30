@@ -1,23 +1,24 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-const Menu = ({state}) => (
+const Menu = ({state, addNew}) => (
 
-<div>
+  <div>
   <div>    
     <Link to="/">anecdotes</Link>&nbsp;
     <Link to="/create">create new</Link>&nbsp;
     <Link to="/about">about </Link>&nbsp;
   </div>
   <Route exact path="/" render={() => <AnecdoteList anecdotes={state.anecdotes} />} />
-  <Route path="/create" render={() => <CreateNew />} />
+  <Route path="/create" render={({history}) => 
+    <CreateNew history={history} addNew={addNew}/>} />
   <Route path="/about" render={() => <About />} />
   <Route exact path="/anecdotes/:id" render={({match}) =>
         <Anecdote anecdote={anecdoteById(match.params.id, state)} />}
         />
-</div>
-
-) 
+  </div>
+   
+)
 
 const anecdoteById = (id, state) => (
 //  console.log(state.anecdotes)
@@ -84,26 +85,34 @@ class CreateNew extends React.Component {
     }
   }
 
+
+
   handleChange = (e) => {
     console.log(e.target.name, e.target.value)
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleSubmit = (e) => {
+
+  handleSubmit = (e, history) => {
     e.preventDefault()
+    console.log(this.props.history)
     this.props.addNew({
       content: this.state.content,
       author: this.state.author,
       info: this.state.info,
       votes: 0
     })
+   console.log(history)
+   this.props.history.push('/')
   }
 
   render() {
+console.log(this.props.history)
+
     return(
       <div>
         <h2>create a new anecdote</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} history={this.props.history}>
           <div>
             content 
             <input name='content' value={this.state.content} 
@@ -179,7 +188,7 @@ class App extends React.Component {
       <Router>
       <div>
         <h1>Software anecdotes</h1>
-          <Menu state={this.state} />
+          <Menu state={this.state} addNew={this.addNew}/>
         <Footer />
         </div>
         </Router>

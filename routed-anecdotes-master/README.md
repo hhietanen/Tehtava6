@@ -10,3 +10,9 @@
 Meni kauan ihmetellä miten parametrin puretaan ({ anecdote }) => { ... }- mallilla
 
 Onneksi Joona auttoi Telegrammissa.
+
+23:40 6.18 on valmis. Nyt kurssista on 115 pistettä 5op ja 5/5 arvosana. Tähän meni noin tunti
+
+WooT w00t
+
+****
