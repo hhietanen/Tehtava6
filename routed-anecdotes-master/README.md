@@ -16,3 +16,12 @@ Onneksi Joona auttoi Telegrammissa.
 WooT w00t
 
 ****
+
+2.9. Palataan 6.18 tehtävään. Unohdin notifikaation. klo 15:10 tehtävä on valmis
+
+klo 16:09 6.19 ja 6.20 valmiit.
+
+klo 6.20 edellytti pähkäily NavLink ja sen dokumentaation kanssa.
+
+Tunnissa kaksi CSS tehtävää
+

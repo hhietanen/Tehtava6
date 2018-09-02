@@ -1,25 +1,34 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 
-const Menu = ({state, addNew}) => (
+const Menu = ({state, addNew, notify}) => {
+  const menuStyle = {
+  fontSize: 20,
+  backgroundColor: 'lightblue',
+}
 
+  const selected = {
+  fontSize: 20,
+  backgroundColor: 'grey'
+}
+
+return (
   <div>
-  <div>    
-    <Link to="/">anecdotes</Link>&nbsp;
-    <Link to="/create">create new</Link>&nbsp;
-    <Link to="/about">about </Link>&nbsp;
+  <div style={menuStyle}>    
+    <NavLink exact to="/" activeStyle={selected}>anecdotes</NavLink>&nbsp;
+    <NavLink exact to="/create" activeStyle={selected}>create new</NavLink>&nbsp;
+    <NavLink exact to="/about" activeStyle={selected}>about </NavLink>&nbsp;
   </div>
   <Route exact path="/" render={() => <AnecdoteList anecdotes={state.anecdotes} />} />
   <Route path="/create" render={({history}) => 
-    <CreateNew history={history} addNew={addNew}/>} />
+    <CreateNew notify={notify} history={history} addNew={addNew}/>} />
   <Route path="/about" render={() => <About />} />
   <Route exact path="/anecdotes/:id" render={({match}) =>
         <Anecdote anecdote={anecdoteById(match.params.id, state)} />}
         />
   </div>
-   
 )
-
+}
 const anecdoteById = (id, state) => (
 //  console.log(state.anecdotes)
   state.anecdotes.find(anecdote => anecdote.id === id)
@@ -27,6 +36,7 @@ const anecdoteById = (id, state) => (
 
 const Anecdote = ({anecdote}) => {
   console.log(anecdote)
+
   return (
     <div>
       <h2> {anecdote.content} by {anecdote.author}</h2>
@@ -75,6 +85,28 @@ const Footer = () => (
   </div>
 )
 
+const Notification = ({notify}) => {
+const footerStyle = {
+  color: 'green',
+  fontSize: 36,
+  borderColor: 'green',
+  borderStyle: 'solid',
+  borderRadius: '25px'
+}
+
+const noStyle ={
+  display: 'none' 
+}
+
+let myStyle = notify ? footerStyle : noStyle
+
+console.log(notify)
+  return (
+  <div style = {myStyle} > 
+    {notify}
+  </div>
+)
+}
 class CreateNew extends React.Component {
   constructor() {
     super()
@@ -93,7 +125,7 @@ class CreateNew extends React.Component {
   }
 
 
-  handleSubmit = (e, history) => {
+  handleSubmit = (e, history, notify) => {
     e.preventDefault()
     console.log(this.props.history)
     this.props.addNew({
@@ -103,7 +135,10 @@ class CreateNew extends React.Component {
       votes: 0
     })
    console.log(history)
+   this.props.notify(this.state.content)
+
    this.props.history.push('/')
+
   }
 
   render() {
@@ -169,6 +204,16 @@ class App extends React.Component {
   anecdoteById = (id) =>
     this.state.anecdotes.find(a => a.id === id)
 
+
+  notify = (notification) => {
+    this.setState({message: `A new anecdote: '${notification}' created!`})
+    console.log('Päästiin notifyhyn')
+    setTimeout(() => {
+      this.setState({message: null})
+    }, 3000)
+  }
+
+
   vote = (id) => {
     const anecdote = this.anecdoteById(id)
 
@@ -182,13 +227,18 @@ class App extends React.Component {
     this.setState({ anecdotes })
   }
 
+
+
+
   render() {
     return (
       <div>
       <Router>
       <div>
+          <Notification notify={this.state.message} />
         <h1>Software anecdotes</h1>
-          <Menu state={this.state} addNew={this.addNew}/>
+          <Menu notify={this.notify} state={this.state} addNew={this.addNew}/>
+  
         <Footer />
         </div>
         </Router>
