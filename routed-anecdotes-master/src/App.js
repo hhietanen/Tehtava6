@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+import { ListGroup, ListGroupItem, Media } from 'react-bootstrap'
 
 const Menu = ({state, addNew, notify}) => {
   const menuStyle = {
@@ -9,7 +10,7 @@ const Menu = ({state, addNew, notify}) => {
 
   const selected = {
   fontSize: 20,
-  backgroundColor: 'grey'
+  backgroundColor: 'grey',
 }
 
 return (
@@ -50,17 +51,25 @@ const Anecdote = ({anecdote}) => {
 const AnecdoteList = ({ anecdotes }) => (
   <div>
     <h2>Anecdotes</h2>
-    <ul>
-      {anecdotes.map(anecdote => <li key={anecdote.id} >
-         <Link to={`/anecdotes/${anecdote.id}`}>{anecdote.content}</Link></li>)}
-    </ul>  
+    <ListGroup>
+      {anecdotes.map(anecdote => 
+          <ListGroupItem key={anecdote.id} >
+              <Link to={`/anecdotes/${anecdote.id}`}>{anecdote.content}
+              </Link>
+      </ListGroupItem>
+      )}
+    </ListGroup>
   </div>
 )
 
 const About = () => (
   <div>
     <h2>About anecdote app</h2>
-    <p>According to Wikipedia:</p>
+
+    <Media>
+
+    <Media.Body>
+     <Media.Heading>According to Wikipedia: </Media.Heading>
     
     <em>An anecdote is a brief, revealing account of an individual person 
     or an incident. 
@@ -74,6 +83,11 @@ const About = () => (
 
     <p>Software engineering is full of excellent anecdotes, at this app you 
     can find the best and add more.</p>
+    </Media.Body>
+        <Media.Right>
+      <img src={require('./ada.jpg')} alt="thumbnail" />
+    </Media.Right>
+    </Media>
   </div>
 )
 
@@ -232,7 +246,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
       <Router>
       <div>
           <Notification notify={this.state.message} />

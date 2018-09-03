@@ -25,3 +25,7 @@ klo 6.20 edellytti pähkäily NavLink ja sen dokumentaation kanssa.
 
 Tunnissa kaksi CSS tehtävää
 
+***
+
+3.9. klo 9 UI tehtävien aloitus
+
