@@ -28,4 +28,5 @@ Tunnissa kaksi CSS tehtävää
 ***
 
 3.9. klo 9 UI tehtävien aloitus
+klo 10:40 kaikki valmista. Taistelu Materialin kanssa oli osoitti, että olisi pitänyt järjestellä koko appi uusiksi. Ehkä 7 osan kanssa harjoittelen tätä. Nyt 30 minuutin säädön jälkeen lähinnä ärsytti propsien kanssa säätö.
 
